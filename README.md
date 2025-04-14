@@ -1,35 +1,36 @@
 # pymongo-api
 
-## Как запустить
+## Диаграмма
 
-Запускаем mongodb и приложение
+Файл диаграммы в корне репозитория
+[pymongo-api.drawio](pymongo-api.drawio)
+
+А так же доступна по ссылке
+https://drive.google.com/file/d/1pNEu0kVNDLyBoOEObJWwWRvnZx6X0fOC/view?usp=sharing
+
+## Как запустить sharding-repl-cache
+
+Переходим в директорию приложения
+```shell
+cd sharding-repl-cache
+```
+
+Запускаем mongodb, redis и приложение
 
 ```shell
 docker compose up -d
 ```
 
-Заполняем mongodb данными
+Проводим инициализацию и заполняем mongodb данными
 
 ```shell
-./scripts/mongo-init.sh
+./scripts/init.sh
 ```
 
-## Как проверить
+Откройте в браузере http://localhost:3002
 
-### Если вы запускаете проект на локальной машине
-
-Откройте в браузере http://localhost:8080
-
-### Если вы запускаете проект на предоставленной виртуальной машине
-
-Узнать белый ip виртуальной машины
+Для очистки во избежания конфликтов при запуске других заданий
 
 ```shell
-curl --silent http://ifconfig.me
+docker compose down -v --rmi all
 ```
-
-Откройте в браузере http://<ip виртуальной машины>:8080
-
-## Доступные эндпоинты
-
-Список доступных эндпоинтов, swagger http://<ip виртуальной машины>:8080/docs
